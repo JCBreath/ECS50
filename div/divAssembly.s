@@ -24,7 +24,7 @@ _start:
 
 		shll $1, %edx			# remainder = remainder << 1; 
 
-		if_start1:				# if(dividend & (1<<i)) 
+		if_start1:			# if(dividend & (1<<i)) 
 			movl $1, %esi
 			shll %cl, %esi		# (1<<i)
 			andl dividend, %esi 	# dividend & (1<<i)
@@ -33,17 +33,17 @@ _start:
 			addl $1, %edx		# remainder++;
 		if_end1:
 
-		if_start2:				# if(remainder >= divisor)
+		if_start2:			# if(remainder >= divisor)
 			movl divisor, %ebx
 			cmpl %ebx, %edx		# remainder >= divisor
-				jl if_end2		# remainder < divisor
+				jl if_end2	# remainder < divisor
 			subl divisor, %edx	# remainder -= divisor;
 			movl $1, %esi		# 1
 			shll %cl, %esi		# 1<<i
 			orl %esi, %eax		# quotient |= (1<<i);
 		if_end2:
 
-		decl %ecx				# i--
+		decl %ecx			# i--
 
 		jmp for_loop_start		# for
 
