@@ -13,15 +13,15 @@ int main(int argc, char *argv[])
 	dividend = strtoul(argv[1], NULL, 0);
 	divisor = strtoul(argv[2], NULL, 0);
 
-    for(int i = 31; i >= 0; i--) /* 32-bit unsigned int */
+    for(int i = 31; i >= 0; i--) 		/* 32-bit unsigned int */
 	{
 		remainder = remainder << 1; 	/* left opt (carry) */
-		if(dividend & (1<<i)) 			/* check if dividend is at front */
-			remainder++;				/* assign to remainder as part of dividend */
-		if(remainder >= divisor)		/* if remainder is larger than divisor */
+		if(dividend & (1<<i)) 		/* check if dividend is at front */
+			remainder++;		/* assign to remainder as part of dividend */
+		if(remainder >= divisor)	/* if remainder is larger than divisor */
 		{
 			remainder -= divisor;
-			quotient |= (1<<i);			/* change the specific bit of quotient to 1 */
+			quotient |= (1<<i);	/* change the specific bit of quotient to 1 */
 		}
 	}
 
