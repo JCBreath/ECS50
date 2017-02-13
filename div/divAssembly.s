@@ -27,7 +27,7 @@ _start:
 		if_start1:				# if(dividend & (1<<i)) 
 			movl $1, %esi
 			shll %cl, %esi		# (1<<i)
-			andl dividend, %esi # dividend & (1<<i)
+			andl dividend, %esi 	# dividend & (1<<i)
 			cmpl $0, %esi		# if()
 				je if_end1
 			addl $1, %edx		# remainder++;
